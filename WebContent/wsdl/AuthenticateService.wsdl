@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AuthenticateService" targetNamespace="http://www.dj.com/AuthenticateService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.dj.com/AuthenticateService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://www.dj.com">
+  <wsdl:import namespace="http://www.dj.com" location="AuthenticateServicePortType.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="AuthenticateServiceSOAP" type="intf:AuthenticateService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="authenticate">
+      <soap:operation soapAction="http://www.dj.com/AuthenticateService/authenticate"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticateService">
+    <wsdl:port name="AuthenticateServiceSOAP" binding="tns:AuthenticateServiceSOAP">
+      <soap:address location="http://localhost:8080/WebServiceProject/services/AuthenticateServiceSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

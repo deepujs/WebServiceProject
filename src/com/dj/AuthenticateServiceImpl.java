@@ -32,20 +32,20 @@ public class AuthenticateServiceImpl implements AuthenticateService {
     public com.dj.AuthenticateResponse authenticate(AuthenticateRequest parameters) { 
         LOG.info("Executing operation authenticate");
         System.out.println(parameters);
+        com.dj.AuthenticateResponse response = new com.dj.AuthenticateResponse();
         try {
-            com.dj.AuthenticateResponse response = new com.dj.AuthenticateResponse();
+            
             if(parameters.getUsername().equalsIgnoreCase("deepujs") 
         			&& parameters.getPassword().equals("ambilycr")){
             	response.setStatus(true);
         	}else{
         		response.setStatus(false);
         	}
-            
-            return response;
         } catch (Exception ex) {
             ex.printStackTrace();
-            throw new RuntimeException(ex);
+            response.setStatus(false);
         }
+        return response;
     }
 
 }
